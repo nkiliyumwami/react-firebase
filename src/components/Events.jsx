@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const UsingState = () => {
+const Events = () => {
   //State
   const [name, setName] = useState("Mario");
   const [count, setCount] = useState(0);
@@ -58,4 +58,4 @@ const UsingState = () => {
   );
 };
 
-export default UsingState;
+export default Events;

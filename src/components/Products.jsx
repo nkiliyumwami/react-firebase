@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProductList from "./ProductList";
 
 const data = [
   {
@@ -23,7 +24,7 @@ const data = [
   },
 ];
 
-const UseState = () => {
+const Products = () => {
   const [products, setProducts] = useState(data);
   const [showProducts, setShowProducts] = useState(true);
 
@@ -50,19 +51,11 @@ const UseState = () => {
         </div>
       )}
 
-      {showProducts &&
-        products.map((product) => (
-          <div className="p-2" key={product.id}>
-            <h2>
-              {product.title} -- ${product.price}
-            </h2>
-            <button onClick={() => handleClick(product.id)}>
-              Delete Product {product.id}
-            </button>
-          </div>
-        ))}
+      {showProducts && (
+        <ProductList products={products} handleClick={handleClick} />
+      )}
     </div>
   );
 };
 
-export default UseState;
+export default Products;

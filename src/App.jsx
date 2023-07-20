@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Modal from "./components/Modal";
 import Title from "./components/Title";
-import UseState from "./components/UseState";
+import Products from "./components/Products";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -18,13 +18,13 @@ function App() {
   return (
     <>
       <Title
-        title="Mario Kingdon Events"
-        subtitle="All the latest events in Mario Kingdom"
+        title="Cheap Apple Products"
+        subtitle="We have the good deals on market!"
       />
       <div className="fixed top-40 left-120">
         <button onClick={toggleModal}>Discount!!</button>
       </div>
-      <UseState />
+      <Products />
       {showModal && (
         <Modal handleClose={handleClose}>
           <h2>10% Off Coupon Code!!</h2>
