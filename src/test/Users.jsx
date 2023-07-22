@@ -51,9 +51,17 @@ const Users = () => {
   };
   return (
     <div className="p-2 m-0">
-      <button onClick={() => setShowModal(true)} className="fixed top-20 ">
+      <button
+        onClick={() => setShowModal(true)}
+        className={
+          showModal
+            ? "bg-green-700 fixed top-20"
+            : "bg-red-900/0.5 fixed top-20 right-10"
+        }
+      >
         Employee of the month!!
       </button>
+
       <Title
         title={"Our Employees"}
         subTitle={"It is a privilege to work here!"}
