@@ -7,7 +7,7 @@ function UserList({ users, handleDelete }) {
       {users.map((user) => (
         <div className={styles.card} key={user.id}>
           <h2>
-            Name: {user.firstName} Age: {user.age}{" "}
+            Name: {user.firstName} Age: {user.age} Created On: {user.date}
           </h2>
           <button onClick={() => handleDelete(user.id)}>Delete</button>
         </div>

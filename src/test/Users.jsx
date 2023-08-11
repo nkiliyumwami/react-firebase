@@ -2,6 +2,7 @@ import { useState } from "react";
 import UserList from "./UserList";
 import Title from "./Title";
 import Modal from "./Modal";
+import NewUserForm from "./NewUserForm";
 
 const usersData = [
   {
@@ -32,9 +33,18 @@ const usersData = [
 ];
 
 const Users = () => {
-  const [users, setUsers] = useState(usersData);
+  const [users, setUsers] = useState([]);
   const [showUsers, setShowUsers] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  //add a user
+  const addUser = (user) => {
+    setUsers((prevUsers) => {
+      return [...prevUsers, user];
+    });
+    //Close the model after adding a user
+    setShowModal(false);
+  };
 
   //deleting a user
   const handleDelete = (id) => {
@@ -45,10 +55,6 @@ const Users = () => {
     });
   };
 
-  // Closing the modal
-  const handleClose = () => {
-    setShowModal(false);
-  };
   return (
     <div className="p-2 m-0">
       <button
@@ -59,7 +65,7 @@ const Users = () => {
             : "bg-red-900/0.5 fixed top-20 right-10"
         }
       >
-        Employee of the month!!
+        Add a new user!
       </button>
 
       <Title
@@ -69,25 +75,21 @@ const Users = () => {
       <br />
       {!showUsers && (
         <button className="p-2 m-2" onClick={() => setShowUsers(true)}>
-          Show Employees
+          Show Users
         </button>
       )}
 
       {showUsers && (
         <button className="p-2 m-2" onClick={() => setShowUsers(false)}>
-          Hide Employees
+          Hide Users
         </button>
       )}
 
       {showUsers && <UserList users={users} handleDelete={handleDelete} />}
       {showModal && (
-        <Modal handleClose={handleClose}>
-          <h2>Here is our employee of the month</h2>
-          <br />
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
-            magni rerum ut nihil, tempore libero ea consequatur ullam suscipit.
-          </p>
+        <Modal>
+          <h2>Add new user</h2>
+          <NewUserForm addUser={addUser} />
         </Modal>
       )}
     </div>
